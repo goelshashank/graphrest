@@ -21,26 +21,20 @@ public class ExecuteSQLScript {
 
     private static final Logger logger = LoggerFactory.getLogger(ExecuteSQLScript.class);
 
-    public static void executeScript()
-    {
-        String aSQLScriptFilePath = "/schema/createSchema.sql";
+    public static void executeScript() {
+        String aSQLScriptFilePath = "src/schema/mysql/createSchema.sql";
 
         // Create MySql Connection
         try {
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/testdb", "root", "root");
-        Statement stmt = null;
-
-
-            // Initialize object for ScripRunner
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/testdb", "root", "root");
+            Statement stmt = null;
             ScriptRunner sr = new ScriptRunner(con, false, false);
 
-            // Give the input file to Reader
             Reader reader = new BufferedReader(
                     new FileReader(aSQLScriptFilePath));
 
-            // Exctute script
             sr.runScript(reader);
 
             logger.info("SQL Script executed");

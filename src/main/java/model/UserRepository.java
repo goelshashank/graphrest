@@ -1,15 +1,19 @@
 package model;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface UserRepository extends  CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, Long> {
 
+    public static final String GET_ALL = "select  * from " + "users";
 
-    public List<User> findAll ();
+    @Query(value = GET_ALL, nativeQuery = true)
+    public List<User> findAllUsers();
 
-    public List<User> findAll (List<Long> ids);
+    public List<User> findAll();
 }

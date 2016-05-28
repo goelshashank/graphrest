@@ -3,11 +3,13 @@ package model;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,15 +26,7 @@ public class JPAUtil {
     EntityManager em;
 
     public String getAll(String tableName) throws JsonProcessingException {
-
-        Query q = em.createNativeQuery("SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS  WHERE TABLE_NAME " + "="
-                + "'" + tableName + "'");
-        List listColumnsNames = q.getResultList();
-        q = em.createNativeQuery("SELECT * FROM " + tableName + " a");
-
-        List listColumnValues = q.getResultList();
-       return  null;
-
+        return null;
     }
 
 

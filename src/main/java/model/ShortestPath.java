@@ -4,8 +4,10 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
+import javax.xml.crypto.Data;
+
 public class ShortestPath {
-    static final int V = 9;
+    int V = 0;
 
     int minDistance(int dist[], Boolean sptSet[]) {
         // Initialize min value
@@ -39,7 +41,7 @@ public class ShortestPath {
 
     }
 
-    Map dijkstra(int graph[][], int src) {
+    DataOut dijkstra(int graph[][], int src) {
         int dist[] = new int[V]; // The output array. dist[i] will hold
         Boolean sptSet[] = new Boolean[V];
 
@@ -64,15 +66,21 @@ public class ShortestPath {
 
         printSolution(dist);
         System.out.println("paths");
-        //printPath();
-
-        return map;
+        DataOut dataOut = new DataOut();
+        dataOut.setDist(dist);
+        dataOut.setMap(map);
+        return dataOut;
     }
 
     // Driver method
-    public static List findShortest(int graph[][]) {
+    public DataOut findShortest(int graph[][], int fromNode) {
 
+        V = graph.length;
         ShortestPath t = new ShortestPath();
-        return (List) t.dijkstra(graph, 8).get(8);
+       DataOut dataOut= t.dijkstra(graph, fromNode);
+       return dataOut;
     }
+
+
 }
+
