@@ -7,7 +7,7 @@ import java.io.*;
 import javax.xml.crypto.Data;
 
 public class ShortestPath {
-    int V = 0;
+    static int V = 0;
 
     int minDistance(int dist[], Boolean sptSet[]) {
         // Initialize min value
@@ -72,13 +72,23 @@ public class ShortestPath {
         return dataOut;
     }
 
-    // Driver method
-    public DataOut findShortest(int graph[][], int fromNode) {
+    public static void main(String args[]) {
 
-        V = graph.length;
+        int graph[][] = new int[][]{{0, 4, Integer.MAX_VALUE, 0, 0, 0, 0, 8, 0},
+                {4, 0, 8, 0, 0, 0, 0, 11, 0},
+                {0, 8, 0, 7, 0, 4, 0, 0, 2},
+                {0, 0, 7, 0, 9, 14, 0, 0, 0},
+                {0, 0, 0, 9, 0, 10, 0, 0, 0},
+                {0, 0, 4, 0, 10, 0, 2, 0, 0},
+                {0, 0, 0, 14, 0, 2, 0, 1, 6},
+                {8, 11, 0, 0, 0, 0, 1, 0, 7},
+                {0, 0, 2, 0, 0, 0, 6, 7, 0}
+        };
+
+        V = 9;
         ShortestPath t = new ShortestPath();
-       DataOut dataOut= t.dijkstra(graph, fromNode);
-       return dataOut;
+        DataOut dataOut = t.dijkstra(graph, 0);
+        System.out.println("test");
     }
 
 

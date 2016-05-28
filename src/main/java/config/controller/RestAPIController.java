@@ -25,7 +25,7 @@ import model.User;
 import model.UserRepository;
 
 /**
- * Created by prashant on 2/5/16.
+ * Created by shashank on 2/5/16.
  */
 
 
@@ -103,13 +103,13 @@ public class RestAPIController {
             }
         }
         ShortestPath shortestPath= new ShortestPath();
-        DataOut dataOut= shortestPath.findShortest(listInt, userIdList.indexOf(fromuserid
-                .intValue()));
+     //   DataOut dataOut= shortestPath.findShortest(listInt, userIdList.indexOf(fromuserid
+      //          .intValue()));
         List<User> userList1 = new ArrayList<>();
       /*  for (Long userId : userIds) {
             userList1.add(userRepository.findOne(userId));
         }*/
-        System.out.println(dataOut.getDist());
+     //   System.out.println(dataOut.getDist());
         return userList1;
 
     }
